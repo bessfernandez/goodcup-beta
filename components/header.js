@@ -10,6 +10,8 @@ const Header = () => {
 
   const { data: user, mutate: mutateUser } = useSWR('/api/user', fetcher);
 
+
+
   const logout = async () => {
     const res = await fetch('/api/logout');
     if (res.ok) {
