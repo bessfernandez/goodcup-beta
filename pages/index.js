@@ -20,6 +20,11 @@ const Home = ({ token }) => {
             completed
           }
         }
+        allRoasters {
+          data {
+            name
+          }
+        }
       }
     `,
     fetcher
@@ -49,6 +54,20 @@ const Home = ({ token }) => {
       console.error(error);
     }
   };
+
+  const returnCoffees = (roasters) => {
+    console.log(roasters)
+    return(
+      <React.Fragment>
+      <h2>Roasters</h2>
+      <ul>
+        {roasters.map((roaster) => (
+            <li key={roaster}>{roaster.name}</li>
+        ))}
+      </ul>
+      </React.Fragment>
+    )
+  }
 
   const deleteATodo = async (id) => {
     const mutation = gql`
@@ -83,7 +102,13 @@ const Home = ({ token }) => {
         <a>Create New Todo</a>
       </Link>
 
-      {data ? (
+      {data && data.allRoasters &&
+        returnCoffees(data.allRoasters.data)
+      }
+
+      {data && data.allTodos ? (
+        <React.Fragment>
+        <h2>Todo</h2>
         <ul>
           {data.allTodos.data.map((todo) => (
             <li key={todo._id} className={styles.todo}>
@@ -111,6 +136,7 @@ const Home = ({ token }) => {
             </li>
           ))}
         </ul>
+        </React.Fragment>
       ) : (
         <Box>
           <CircularProgress />

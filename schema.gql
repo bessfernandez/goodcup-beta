@@ -1,14 +1,37 @@
-type Todo {
-  task: String!
-  completed: Boolean!
-  owner: User!
+type Address @embedded {
+  street: String!
+  city: String!
+  zipCode: String!
+}
+enum RoastLevel {
+  LIGHT
+  MEDIUM
+  DARK
 }
 
-type User {
-  email: String! @unique
-  todos: [Todo!] @relation
+enum Aroma {
+  CHOCOLATE
+  BERRY
+  LEMON
+}
+
+
+type Coffee {
+  name: String!
+  rating: Int
+  roastLevel: RoastLevel
+  aroma: Aroma
+  roaster: Roaster
+}
+
+type Roaster {
+  name: String!
+  address: Address
+  coffees: [Coffee] @relation
 }
 
 type Query {
-  allTodos: [Todo!]
+  allCoffees: [Coffee!] @index(name: "all_coffees")
+  todosByRating(rating: Int!): [Coffee!]
+  allRoasters: [Roaster!] @index(name: "all_roasters")
 }
