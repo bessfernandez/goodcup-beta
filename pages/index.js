@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CircularProgress, Box } from "@material-ui/core"
 import useSWR from 'swr';
 import { gql } from 'graphql-request';
 import Layout from '../components/layout';
@@ -77,6 +78,7 @@ const Home = ({ token }) => {
     <Layout>
       <h1>Next Fauna GraphQL CRUD</h1>
 
+
       <Link href="/new">
         <a>Create New Todo</a>
       </Link>
@@ -110,7 +112,9 @@ const Home = ({ token }) => {
           ))}
         </ul>
       ) : (
-        <div>loading...</div>
+        <Box>
+          <CircularProgress />
+        </Box>
       )}
     </Layout>
   );

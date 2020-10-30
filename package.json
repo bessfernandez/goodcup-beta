@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "cookie": "^0.4.1",
     "faunadb": "^2.14.2",
     "graphql": "^15.3.0",
