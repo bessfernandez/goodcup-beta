@@ -1,24 +1,24 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import { gql } from 'graphql-request';
-import { useForm } from 'react-hook-form';
-import Layout from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { graphQLClient } from '../utils/graphql-client';
-import { getAuthCookie } from '../utils/auth-cookies';
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
+import { gql } from 'graphql-request'
+import { useForm } from 'react-hook-form'
+import Layout from '../components/layout'
+import utilStyles from '../styles/utils.module.css'
+import { graphQLClient } from '../utils/graphql-client'
+import { getAuthCookie } from '../utils/auth-cookies'
 
 const New = ({ token }) => {
-  const router = useRouter();
+  const router = useRouter()
 
-  const { data: user } = useSWR('/api/user');
+  const { data: user } = useSWR('/api/user')
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, errors } = useForm()
 
   const onSubmit = handleSubmit(async ({ task }) => {
-    if (errorMessage) setErrorMessage('');
+    if (errorMessage) setErrorMessage('')
 
     const mutation = gql`
       mutation CreateATodo($task: String!, $owner: ID!) {
@@ -32,21 +32,21 @@ const New = ({ token }) => {
           }
         }
       }
-    `;
+    `
 
     const variables = {
       task,
       owner: user && user.id,
-    };
+    }
 
     try {
-      await graphQLClient(token).request(mutation, variables);
-      router.push('/');
+      await graphQLClient(token).request(mutation, variables)
+      router.push('/')
     } catch (error) {
-      console.error(error);
-      setErrorMessage(error.message);
+      console.error(error)
+      setErrorMessage(error.message)
     }
-  });
+  })
 
   return (
     <Layout>
@@ -79,12 +79,12 @@ const New = ({ token }) => {
         </p>
       )}
     </Layout>
-  );
-};
-
-export async function getServerSideProps(ctx) {
-  const token = getAuthCookie(ctx.req);
-  return { props: { token: token || null } };
+  )
 }
 
-export default New;
+export async function getServerSideProps(ctx) {
+  const token = getAuthCookie(ctx.req)
+  return { props: { token: token || null } }
+}
+
+export default New
