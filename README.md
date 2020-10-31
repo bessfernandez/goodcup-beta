@@ -1,9 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project with [FaunaDB](https://fauna.com/) and [GraphQL](https://docs.fauna.com/fauna/current/api/graphql/). It has cookie-based user authentication implemented using FaunaDB built-in auth management.
+# Good cup
+Now. that's a good cup. :coffee:
 
-## Tutorial
+## What is
+A place to research coffee beans and journal your favorites.
 
-**Implement FaunaDB Authentication in Next.js and GraphQL App**
-
-- [Medium](https://medium.com/@kjmczk)
-- [DEV](https://dev.to/kjmczk)
-- [KJmczk](https://kjmczk.dev/blog/)
+## Tech Stack.
+- Next.js
+- Vercel
+- FaunaDB
+- GraphQL
+- :love:
