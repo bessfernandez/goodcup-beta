@@ -23,6 +23,11 @@ const Home = ({ token }) => {
         allRoasters {
           data {
             name
+            coffees {
+              data {
+                name
+              }
+            }
           }
         }
       }
@@ -56,14 +61,20 @@ const Home = ({ token }) => {
   };
 
   const returnCoffees = (roasters) => {
-    console.log(roasters)
     return(
       <React.Fragment>
       <h2>Roasters</h2>
       <ul>
-        {roasters.map((roaster) => (
-            <li key={roaster}>{roaster.name}</li>
-        ))}
+        {roasters.map((roaster) => {
+          return (
+            <li key={roaster}>{roaster.name}
+              {roaster.coffees &&
+                <ul>
+                  <li>{roaster.coffees.data[0].name}</li>
+                </ul>
+              }
+            </li>
+        )})}
       </ul>
       </React.Fragment>
     )
