@@ -1,24 +1,22 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import styles from './header.module.css';
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
+import styles from './header.module.css'
 
 const Header = () => {
-  const router = useRouter();
+  const router = useRouter()
 
-  const fetcher = (url) => fetch(url).then((r) => r.json());
+  const fetcher = (url) => fetch(url).then((r) => r.json())
 
-  const { data: user, mutate: mutateUser } = useSWR('/api/user', fetcher);
-
-
+  const { data: user, mutate: mutateUser } = useSWR('/api/user', fetcher)
 
   const logout = async () => {
-    const res = await fetch('/api/logout');
+    const res = await fetch('/api/logout')
     if (res.ok) {
-      mutateUser(null);
-      router.push('/login');
+      mutateUser(null)
+      router.push('/login')
     }
-  };
+  }
 
   return (
     <div className={styles.header}>
@@ -58,7 +56,7 @@ const Header = () => {
         </nav>
       </header>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { useForm } from 'react-hook-form';
-import Layout from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
+import Layout from '../components/layout'
+import utilStyles from '../styles/utils.module.css'
 
 const Login = () => {
-  const router = useRouter();
+  const router = useRouter()
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, errors } = useForm()
 
   const onSubmit = handleSubmit(async (formData) => {
-    if (errorMessage) setErrorMessage('');
+    if (errorMessage) setErrorMessage('')
 
     try {
       const res = await fetch('/api/login', {
@@ -21,18 +21,18 @@ const Login = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      });
+      })
 
       if (res.ok) {
-        router.push('/');
+        router.push('/')
       } else {
-        throw new Error(await res.text());
+        throw new Error(await res.text())
       }
     } catch (error) {
-      console.error(error);
-      setErrorMessage(error.message);
+      console.error(error)
+      setErrorMessage(error.message)
     }
-  });
+  })
 
   return (
     <Layout>
@@ -78,7 +78,7 @@ const Login = () => {
         </p>
       )}
     </Layout>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import styles from './layout.module.css';
-import Header from '../components/header';
+import Head from 'next/head'
+import styles from './layout.module.css'
+import Header from '../components/header'
 
 const Layout = ({ children }) => (
   <>
@@ -15,6 +15,6 @@ const Layout = ({ children }) => (
       <div className={styles.container}>{children}</div>
     </main>
   </>
-);
+)
 
-export default Layout;
+export default Layout
