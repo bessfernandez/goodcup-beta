@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
@@ -28,7 +29,7 @@ const Header = () => {
 
           <ul>
             {user ? (
-              <>
+              <React.Fragment>
                 <li>
                   <Link href="/profile">
                     <a>{user.email}</a>
@@ -37,9 +38,9 @@ const Header = () => {
                 <li>
                   <button onClick={logout}>Logout</button>
                 </li>
-              </>
+              </React.Fragment>
             ) : (
-              <>
+              <React.Fragment>
                 <li>
                   <Link href="/login">
                     <a>Login</a>
@@ -50,7 +51,7 @@ const Header = () => {
                     <a>Signup</a>
                   </Link>
                 </li>
-              </>
+              </React.Fragment>
             )}
           </ul>
         </nav>

@@ -40,10 +40,11 @@ const Signup = () => {
 
       <form onSubmit={onSubmit} className={utilStyles.form}>
         <div>
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
+            id="email"
             placeholder="e.g. john@example.com"
             ref={register({ required: 'Email is required' })}
           />
@@ -55,10 +56,11 @@ const Signup = () => {
         </div>
 
         <div>
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
+            id="password"
             placeholder="e.g. John-1234"
             ref={register({ required: 'Password is required' })}
           />
@@ -70,10 +72,11 @@ const Signup = () => {
         </div>
 
         <div>
-          <label>Confirm Password</label>
+          <label htmlFor="confirm-password">Confirm Password</label>
           <input
             type="password"
             name="password2"
+            id="confirm-password"
             placeholder="e.g. John-1234"
             ref={register({
               validate: (value) =>

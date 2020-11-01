@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { gql } from 'graphql-request'
 import { useForm } from 'react-hook-form'
@@ -48,13 +48,14 @@ const EditForm = ({ defaultValues, id, token }) => {
   }, [reset, defaultValues])
 
   return (
-    <>
+    <React.Fragment>
       <form onSubmit={onSubmit} className={utilStyles.form}>
         <div>
-          <label>Task</label>
+          <label htmlFor="task">Task</label>
           <input
             type="text"
             name="task"
+            id="task"
             ref={register({ required: 'Task is required' })}
           />
           {errors.task && (
@@ -65,8 +66,13 @@ const EditForm = ({ defaultValues, id, token }) => {
         </div>
 
         <div>
-          <label>Completed</label>
-          <input type="checkbox" name="completed" ref={register()} />
+          <label htmlFor="completed">Completed</label>
+          <input
+            id="completed"
+            type="checkbox"
+            name="completed"
+            ref={register()}
+          />
           {errors.completed && (
             <span role="alert" className={utilStyles.error}>
               {errors.completed.message}
@@ -84,7 +90,7 @@ const EditForm = ({ defaultValues, id, token }) => {
           {errorMessage}
         </p>
       )}
-    </>
+    </React.Fragment>
   )
 }
 

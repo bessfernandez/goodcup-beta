@@ -63,14 +63,16 @@ const Home = ({ token }) => {
     }
   }
 
-  const returnCoffees = (roasters) => {
+  const returnCoffees = (
+    roasters: [{ name: string; coffees: { data: [{ name: string }] } }]
+  ) => {
     return (
       <React.Fragment>
         <h2>Roasters</h2>
         <ul>
           {roasters.map((roaster) => {
             return (
-              <li key={roaster}>
+              <li key={roaster.name}>
                 {roaster.name}
                 {roaster.coffees && (
                   <ul>
@@ -85,7 +87,7 @@ const Home = ({ token }) => {
     )
   }
 
-  const deleteATodo = async (id) => {
+  const deleteATodo = async (id: number) => {
     const mutation = gql`
       mutation DeleteATodo($id: ID!) {
         deleteTodo(id: $id) {
@@ -159,8 +161,8 @@ const Home = ({ token }) => {
   )
 }
 
-export async function getServerSideProps(ctx) {
-  const token = getAuthCookie(ctx.req)
+export async function getServerSideProps(context) {
+  const token: string = getAuthCookie(context.req)
   return { props: { token: token || null } }
 }
 
