@@ -68,8 +68,8 @@ const Home = ({ token }) => {
   ) => {
     return (
       <React.Fragment>
-        <h2>Roasters</h2>
-        <ul>
+        <h2 className="text-lg mt-4">Roasters</h2>
+        <ul className="my-5">
           {roasters.map((roaster) => {
             return (
               <li key={roaster.name}>
@@ -113,17 +113,33 @@ const Home = ({ token }) => {
 
   return (
     <Layout>
-      <h1>Next Fauna GraphQL CRUD</h1>
+      <div className="md:flex bg-white rounded-lg p-24 justify-center">
+        <img
+          className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
+          src="https://avatars0.githubusercontent.com/u/267047?s=460&v=4"
+          alt="testing"
+        />
+        <div className="text-center md:text-left">
+          <h2 className="text-lg">Bess Fernandez</h2>
+          <div className="text-purple-500">JavaScript developer</div>
+          <div className="text-gray-600">Twitter: @bessington</div>
+          <div className="text-gray-600">that old chesnut</div>
+        </div>
+      </div>
 
-      <Link href="/new">
-        <a>Create New Todo</a>
-      </Link>
-
-      {data && data.allRoasters && returnCoffees(data.allRoasters.data)}
-
+      {data && data.allRoasters && (
+        <React.Fragment>
+          <h1 className="text-xl my-4">Coffees</h1>
+          {returnCoffees(data.allRoasters.data)}
+        </React.Fragment>
+      )}
       {data && data.allTodos ? (
         <React.Fragment>
-          <h2>Todo</h2>
+          <h1 className="text-xl mt-10 mb-4">Next Fauna GraphQL CRUD</h1>
+          <Link href="/new">
+            <a>Create New Todo</a>
+          </Link>
+          <h2 className="text-lg my-4">Todo</h2>
           <ul>
             {data.allTodos.data.map((todo) => (
               <li key={todo._id} className={styles.todo}>
