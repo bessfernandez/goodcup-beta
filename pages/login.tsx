@@ -40,10 +40,11 @@ const Login = () => {
 
       <form onSubmit={onSubmit} className={utilStyles.form}>
         <div>
-          <label>Email</label>
+          <label htmlFor="login-email">Email</label>
           <input
             type="email"
             name="email"
+            id="login-email"
             ref={register({ required: 'Email is required' })}
           />
           {errors.email && (
@@ -54,10 +55,11 @@ const Login = () => {
         </div>
 
         <div>
-          <label>Password</label>
+          <label htmlFor="user-password">Password</label>
           <input
             type="password"
             name="password"
+            id="user-password"
             ref={register({ required: 'Password is required' })}
           />
           {errors.password && (

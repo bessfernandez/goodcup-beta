@@ -54,11 +54,12 @@ const New = ({ token }) => {
 
       <form onSubmit={onSubmit} className={utilStyles.form}>
         <div>
-          <label>Task</label>
+          <label htmlFor="task">Task</label>
           <input
             type="text"
             name="task"
             placeholder="e.g. do something"
+            id="task"
             ref={register({ required: 'Task is required' })}
           />
           {errors.task && (
