@@ -3,15 +3,13 @@ import Link from 'next/link'
 import { CircularProgress, Box } from '@material-ui/core'
 import useSWR from 'swr'
 import { gql } from 'graphql-request'
-import Layout from '../components/layout'
-import styles from '../styles/Home.module.css'
+import Layout from '../components/layout/layout'
+import styles from './Home.module.css'
 import { graphQLClient } from '../utils/graphql-client'
 import { getAuthCookie } from '../utils/auth-cookies'
 
 const Home = ({ token }) => {
   const fetcher = async (query) => await graphQLClient(token).request(query)
-
-  var fin = 'asdasd'
 
   const { data, error, mutate } = useSWR(
     gql`
@@ -104,16 +102,25 @@ const Home = ({ token }) => {
     }
   }
 
-  if (error)
+  if (error) {
     return (
       <Layout>
         <div>failed to load</div>
       </Layout>
     )
+  }
+
+  if (!data) {
+    return (
+      <Box>
+        <CircularProgress />
+      </Box>
+    )
+  }
 
   return (
     <Layout>
-      <div className="md:flex bg-white rounded-lg p-24 justify-center">
+      {/* <div className="md:flex bg-white rounded-lg p-24 justify-center">
         <img
           className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
           src="https://avatars0.githubusercontent.com/u/267047?s=460&v=4"
@@ -125,6 +132,23 @@ const Home = ({ token }) => {
           <div className="text-gray-600">Twitter: @bessington</div>
           <div className="text-gray-600">that old chesnut</div>
         </div>
+      </div> */}
+
+      <div>
+        <header className="bg-white shadow">
+          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl font-bold leading-tight text-gray-900">
+              Dashboard
+            </h1>
+          </div>
+        </header>
+        <main>
+          <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div className="px-4 py-6 sm:px-0">
+              <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+            </div>
+          </div>
+        </main>
       </div>
 
       {data && data.allRoasters && (

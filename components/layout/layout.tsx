@@ -1,12 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
 import styles from './layout.module.css'
-import Header from './header'
+import Header from '../header'
 
 const Layout = ({ children }) => (
   <React.Fragment>
     <Head>
-      <title>Next Fauna Auth</title>
+      <title>Good cup</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
