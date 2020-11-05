@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { gql } from 'graphql-request'
-import Layout from '../../components/layout'
+import Layout from '../../components/layout/layout'
 import EditForm from '../../components/edit-form'
 import { graphQLClient } from '../../utils/graphql-client'
 import { getAuthCookie } from '../../utils/auth-cookies'
