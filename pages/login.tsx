@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import Layout from '../components/layout'
+import Layout from '../components/layout/layout'
 import utilStyles from '../styles/utils.module.css'
 
 const Login = () => {
