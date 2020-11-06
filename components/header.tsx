@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffeeTogo } from '@fortawesome/pro-duotone-svg-icons'
 
 const Header = () => {
   const router = useRouter()
+  const [isDropOpen, setDropOpen] = useState(false)
+  const [isHamburgerOpen, setHamburgerOpen] = useState(false)
 
   const fetcher = (url) => fetch(url).then((r) => r.json())
 
@@ -25,10 +29,10 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img
-                  className="h-8 w-8"
-                  src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg"
-                  alt="Workflow logo"
+                <FontAwesomeIcon
+                  size="2x"
+                  className="text-white"
+                  icon={faCoffeeTogo}
                 />
               </div>
               <div className="hidden md:block">
@@ -110,60 +114,66 @@ const Header = () => {
                       id="user-menu"
                       aria-label="User menu"
                       aria-haspopup="true"
+                      onClick={(e) => setDropOpen(!isDropOpen)}
                     >
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                        src="https://avatars0.githubusercontent.com/u/267047?s=460&v=4"
+                        alt="Profile page"
                       />
                     </button>
                   </div>
-                  <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                    <div
-                      className="py-1 rounded-md bg-white shadow-xs"
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="user-menu"
-                    >
-                      <Link href="/login">
-                        <a
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          role="menuitem"
-                        >
-                          Login
-                        </a>
-                      </Link>
-                      <Link href="/profile">
+                  {isDropOpen && (
+                    <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+                      <div
+                        className="py-1 rounded-md bg-white shadow-xs"
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="user-menu"
+                      >
+                        <Link href="/login">
+                          <a
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem"
+                          >
+                            Login
+                          </a>
+                        </Link>
+                        <Link href="/profile">
+                          <a
+                            href="#"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem"
+                          >
+                            Your Profile
+                          </a>
+                        </Link>
+
                         <a
                           href="#"
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           role="menuitem"
                         >
-                          Your Profile
+                          Settings
                         </a>
-                      </Link>
 
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        role="menuitem"
-                      >
-                        Settings
-                      </a>
-
-                      <button
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={logout}
-                      >
-                        Logout
-                      </button>
+                        <button
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          onClick={logout}
+                        >
+                          Logout
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
             <div className="-mr-2 flex md:hidden">
-              <button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+              <button
+                onClick={(e) => setHamburgerOpen(!isHamburgerOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+              >
                 <svg
                   className="block h-6 w-6"
                   stroke="currentColor"
@@ -195,85 +205,87 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="hidden md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="#"
-              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
-            >
-              Dashboard
-            </a>
-
-            <a
-              href="#"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-            >
-              Team
-            </a>
-
-            <a
-              href="#"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-            >
-              Projects
-            </a>
-
-            <a
-              href="#"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-            >
-              Calendar
-            </a>
-
-            <a
-              href="#"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-            >
-              Reports
-            </a>
-          </div>
-          <div className="pt-4 pb-3 border-t border-gray-700">
-            <div className="flex items-center px-5 space-x-3">
-              <div className="flex-shrink-0">
-                <img
-                  className="h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
-              </div>
-              <div className="space-y-1">
-                <div className="text-base font-medium leading-none text-white">
-                  Tom Cook
-                </div>
-                <div className="text-sm font-medium leading-none text-gray-400">
-                  tom@example.com
-                </div>
-              </div>
-            </div>
-            <div className="mt-3 px-2 space-y-1">
+        {isHamburgerOpen && (
+          <div>
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a
                 href="#"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
               >
-                Your Profile
+                Dashboard
               </a>
 
               <a
                 href="#"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
               >
-                Settings
+                Team
               </a>
 
               <a
                 href="#"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
               >
-                Sign out
+                Projects
+              </a>
+
+              <a
+                href="#"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+              >
+                Calendar
+              </a>
+
+              <a
+                href="#"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+              >
+                Reports
               </a>
             </div>
+            <div className="pt-4 pb-3 border-t border-gray-700">
+              <div className="flex items-center px-5 space-x-3">
+                <div className="flex-shrink-0">
+                  <img
+                    className="h-10 w-10 rounded-full"
+                    src="https://avatars0.githubusercontent.com/u/267047?s=460&v=4"
+                    alt="testing"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <div className="text-base font-medium leading-none text-white">
+                    Bess Fernandez
+                  </div>
+                  <div className="text-sm font-medium leading-none text-gray-400">
+                    bess@example.com
+                  </div>
+                </div>
+              </div>
+              <div className="mt-3 px-2 space-y-1">
+                <a
+                  href="#"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                >
+                  Your Profile
+                </a>
+
+                <a
+                  href="#"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                >
+                  Settings
+                </a>
+
+                <a
+                  href="#"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                >
+                  Sign out
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </nav>
     </header>
   )
