@@ -135,68 +135,60 @@ const Home = ({ token }) => {
       </div> */}
 
       <div>
-        <header className="bg-white shadow">
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold leading-tight text-gray-900">
-              Dashboard
-            </h1>
-          </div>
+        <header>
+          <h1 className="text-3xl font-bold leading-tight text-gray-900">
+            Dashboard
+          </h1>
         </header>
         <main>
-          <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-            <div className="px-4 py-6 sm:px-0">
-              <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-            </div>
-          </div>
+          {data && data.allRoasters && (
+            <React.Fragment>
+              <h1 className="text-xl my-4">Coffees</h1>
+              {returnCoffees(data.allRoasters.data)}
+            </React.Fragment>
+          )}
+          {data && data.allTodos ? (
+            <React.Fragment>
+              <h1 className="text-xl mt-10 mb-4">Next Fauna GraphQL CRUD</h1>
+              <Link href="/new">
+                <a>Create New Todo</a>
+              </Link>
+              <h2 className="text-lg my-4">Todo</h2>
+              <ul>
+                {data.allTodos.data.map((todo) => (
+                  <li key={todo._id} className={styles.todo}>
+                    <span
+                      onClick={() => toggleTodo(todo._id, todo.completed)}
+                      style={
+                        todo.completed
+                          ? { textDecorationLine: 'line-through' }
+                          : { textDecorationLine: 'none' }
+                      }
+                    >
+                      {todo.task}
+                    </span>
+                    <span className={styles.edit}>
+                      <Link href="/todo/[id]" as={`/todo/${todo._id}`}>
+                        <a>Edit</a>
+                      </Link>
+                    </span>
+                    <span
+                      onClick={() => deleteATodo(todo._id)}
+                      className={styles.delete}
+                    >
+                      Delete
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </React.Fragment>
+          ) : (
+            <Box>
+              <CircularProgress />
+            </Box>
+          )}
         </main>
       </div>
-
-      {data && data.allRoasters && (
-        <React.Fragment>
-          <h1 className="text-xl my-4">Coffees</h1>
-          {returnCoffees(data.allRoasters.data)}
-        </React.Fragment>
-      )}
-      {data && data.allTodos ? (
-        <React.Fragment>
-          <h1 className="text-xl mt-10 mb-4">Next Fauna GraphQL CRUD</h1>
-          <Link href="/new">
-            <a>Create New Todo</a>
-          </Link>
-          <h2 className="text-lg my-4">Todo</h2>
-          <ul>
-            {data.allTodos.data.map((todo) => (
-              <li key={todo._id} className={styles.todo}>
-                <span
-                  onClick={() => toggleTodo(todo._id, todo.completed)}
-                  style={
-                    todo.completed
-                      ? { textDecorationLine: 'line-through' }
-                      : { textDecorationLine: 'none' }
-                  }
-                >
-                  {todo.task}
-                </span>
-                <span className={styles.edit}>
-                  <Link href="/todo/[id]" as={`/todo/${todo._id}`}>
-                    <a>Edit</a>
-                  </Link>
-                </span>
-                <span
-                  onClick={() => deleteATodo(todo._id)}
-                  className={styles.delete}
-                >
-                  Delete
-                </span>
-              </li>
-            ))}
-          </ul>
-        </React.Fragment>
-      ) : (
-        <Box>
-          <CircularProgress />
-        </Box>
-      )}
     </Layout>
   )
 }
