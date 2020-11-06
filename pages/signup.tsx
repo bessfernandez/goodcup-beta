@@ -36,7 +36,7 @@ const Signup = () => {
 
   return (
     <Layout>
-      <h1>Sign Up</h1>
+      <h1 className="text-xl my-4">Sign Up</h1>
 
       <form onSubmit={onSubmit} className={utilStyles.form}>
         <div>

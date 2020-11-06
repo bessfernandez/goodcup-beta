@@ -50,7 +50,7 @@ const New = ({ token }) => {
 
   return (
     <Layout>
-      <h1>Create New Todo</h1>
+      <h1 className="text-lg my-4">Create New Todo</h1>
 
       <form onSubmit={onSubmit} className={utilStyles.form}>
         <div>
