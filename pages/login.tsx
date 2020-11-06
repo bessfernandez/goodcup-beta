@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <h1>Log In</h1>
+      <h1 className="text-xl my-4">Log In</h1>
 
       <form onSubmit={onSubmit} className={utilStyles.form}>
         <div>
