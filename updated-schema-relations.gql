@@ -1,0 +1,140 @@
+type Address @embedded {
+  street: String!
+  city: String!
+  zipCode: String!
+}
+enum RoastLevel {
+  light
+  medium
+  medium_dark
+  dark
+}
+
+enum Origin {
+  brazil
+  burundi
+  columbia
+  coasta_rica
+  el_salvador
+  ethiopia
+  guatemala
+  hawaii
+  honduras
+  indonesia
+  kenya
+  nicaragua
+  peru
+  rwanda
+  sumatra
+  tanzania
+  vietnam
+}
+
+enum BeanProcess {
+  natural_dry
+  washed
+  honey
+}
+
+enum BrewMethod {
+  cupping
+  drip
+  espresso
+  pour_over
+  press
+  siphon
+  cold_brew
+  other
+}
+
+enum FlavorWheel {
+  sweet
+  acidic
+  floral
+  spicy
+  salty
+  berry
+  citrus
+  stone_fruit
+  chcolate
+  caramel
+  smoky
+  bitter
+  savory
+  body
+  clean
+  finish
+}
+
+type User {
+  name: String!
+  email: String! @unique
+  picture: String
+  bio: String
+  logs: [Log] @relation
+  coffees: [Coffee] @relation
+}
+
+type Coffee {
+  name: String!
+  type: BeanProcess
+  image: String
+  origin_country: Origin
+  communityFlavors: FlavorWheel
+  communityRating: Int
+  roastLevel: RoastLevel
+  roaster: Roaster! @relation
+  logs: [Log] @relation
+  notes: String
+  link: String
+  loggers: [User] @relation
+}
+
+type Roaster {
+  name: String!
+  address: Address
+  link: String
+  image: String
+  coffees: [Coffee] @relation
+}
+
+type Log {
+  name: String!
+  coffee: Coffee! @relation
+  note: String
+  image: String
+  date: Time
+  method: BrewMethod
+  amount_coffee: Float
+  amount_water: Float
+  grind: String
+  temp: String
+  logger: [User!] @relation
+  flavors: FlavorWheel
+  rating: Int
+  devices: String
+}
+
+type Query {
+  allCoffees: [Coffee!] @index(name: "all_coffees")
+  allRoasters: [Roaster!] @index(name: "all_roasters")
+  allLogs: [Log!] @index(name: "all_logs")
+}
+
+# {
+#   allLogs {
+#     data {
+#       amount_water
+#       coffee {
+#         name
+#       }
+#       rating
+#       logger {
+#         data {
+#           email
+#           name
+#         }
+#       }
+#     }
+#   }
+# }

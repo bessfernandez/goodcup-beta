@@ -30,11 +30,29 @@ const Home = ({ token }) => {
               }
             }
           }
+        },
+        allLogs {
+          data {
+            amount_water
+            name
+            rating
+            coffee {
+              name
+            }
+            rating
+            logger {
+              data {
+                name
+              }
+            }
+          }
         }
       }
     `,
     fetcher
   )
+
+  console.log(data)
 
   const toggleTodo = async (id, completed) => {
     const mutation = gql`
@@ -66,18 +84,60 @@ const Home = ({ token }) => {
   ) => {
     return (
       <React.Fragment>
-        <h2 className="text-lg mt-4">Roasters</h2>
-        <ul className="my-5">
+        <ul className="my-5 mb-5">
           {roasters.map((roaster) => {
             return (
-              <li key={roaster.name}>
+              <li className="mb-8" key={roaster.name}>
                 {roaster.name}
                 {roaster.coffees && (
                   <ul>
-                    <li>{roaster.coffees.data[0].name}</li>
+                    {roaster.coffees.data.map((coffee) => {
+                     return <li className="m-4 nl-4">Coffee: {coffee.name}</li>
+                    })}
+                    {roaster.coffees.data && !roaster.coffees.data.length &&
+                      <li className="m-4 ml-4">No coffees</li>
+                    }
                   </ul>
                 )}
               </li>
+            )
+          })}
+        </ul>
+      </React.Fragment>
+    )
+  }
+
+  const returnLogs= (
+    logs: [{ amount_water: string; coffee: { name: string},  rating: string; name: string; logger: { data: [{ name: string }] } }]
+  ) => {
+    return (
+      <React.Fragment>
+        <ul className="my-5">
+          {logs.map((log) => {
+            return (
+              <React.Fragment>
+              <li className="mt-8">
+                Coffee name: {log.coffee.name}
+              </li>
+              <li className="my-2">
+                Amount of water: {log.amount_water}
+              </li>
+              <li className="my-2">
+                Title: {log.name} <br />
+              </li>
+              <li className="my-2">
+              Rating: {log.rating}
+              </li>
+              <li className="mt-4 my-4" key={log.name}>
+                {log.logger && (
+                  <ul>
+                    {log.logger.data.map((user) => {
+                     return <li className="ml-3">Logged by: {user.name}</li>
+                    })}
+                  </ul>
+                )}
+              </li>
+              </React.Fragment>
             )
           })}
         </ul>
@@ -102,38 +162,34 @@ const Home = ({ token }) => {
     }
   }
 
-  if (error) {
+  if (error && !data) {
     return (
       <Layout>
-        <div>failed to load</div>
+        <h1 className="text-xl my-4">Welcome!</h1>
+        <p>
+          Please {" "}
+          <Link href="/login">
+            <a>login</a>
+          </Link>
+          {" "}
+          to add and log your favorite coffees.
+        </p>
       </Layout>
     )
   }
 
   if (!data) {
     return (
-      <Box>
-        <CircularProgress />
-      </Box>
+      <Layout>
+        <Box className="flex justify-center">
+          <CircularProgress />
+        </Box>
+      </Layout>
     )
   }
 
   return (
     <Layout>
-      {/* <div className="md:flex bg-white rounded-lg p-24 justify-center">
-        <img
-          className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-          src="https://avatars0.githubusercontent.com/u/267047?s=460&v=4"
-          alt="testing"
-        />
-        <div className="text-center md:text-left">
-          <h2 className="text-lg">Bess Fernandez</h2>
-          <div className="text-purple-500">JavaScript developer</div>
-          <div className="text-gray-600">Twitter: @bessington</div>
-          <div className="text-gray-600">that old chesnut</div>
-        </div>
-      </div> */}
-
       <div>
         <header>
           <h1 className="text-3xl font-bold leading-tight text-gray-900">
@@ -143,8 +199,10 @@ const Home = ({ token }) => {
         <main>
           {data && data.allRoasters && (
             <React.Fragment>
-              <h1 className="text-xl my-4">Coffees</h1>
+             <h2 className="text-xl my-4">Roasters</h2>
               {returnCoffees(data.allRoasters.data)}
+              <h2 className="text-xl my-4">Your Cups</h2>
+              {returnLogs(data.allLogs.data)}
             </React.Fragment>
           )}
           {data && data.allTodos ? (
@@ -183,9 +241,11 @@ const Home = ({ token }) => {
               </ul>
             </React.Fragment>
           ) : (
-            <Box>
-              <CircularProgress />
-            </Box>
+            <Layout>
+              <Box className="flex justify-center">
+                <CircularProgress />
+              </Box>
+            </Layout>
           )}
         </main>
       </div>
