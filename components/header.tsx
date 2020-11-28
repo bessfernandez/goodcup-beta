@@ -24,13 +24,14 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="bg-gray-800">
+      <nav className="bg-indigo-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <FontAwesomeIcon
                   size="2x"
+                  color="bg-indigo-100"
                   className="text-white"
                   icon={faCoffeeTogo}
                 />
@@ -38,25 +39,25 @@ const Header = () => {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <Link href="/">
-                    <a className="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">
+                    <a className="px-3 py-2 rounded-md text-sm font-medium text-indigo-800 bg-indigo-100 focus:outline-none focus:text-white focus:bg-coolGrey-100">
                       Home
                     </a>
                   </Link>
 
                   <Link href="/">
-                    <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                    <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700">
                       Your Coffees
                     </a>
                   </Link>
 
                   <Link href="/">
-                    <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                    <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700">
                       Top Picks
                     </a>
                   </Link>
 
                   <Link href="/">
-                    <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                    <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700">
                       Roasters
                     </a>
                   </Link>
@@ -172,7 +173,7 @@ const Header = () => {
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={(e) => setHamburgerOpen(!isHamburgerOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:bg-gray-700 focus:text-white"
               >
                 <svg
                   className="block h-6 w-6"
@@ -217,28 +218,28 @@ const Header = () => {
 
               <a
                 href="#"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
               >
                 Team
               </a>
 
               <a
                 href="#"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
               >
                 Projects
               </a>
 
               <a
                 href="#"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
               >
                 Calendar
               </a>
 
               <a
                 href="#"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
               >
                 Reports
               </a>
@@ -264,21 +265,21 @@ const Header = () => {
               <div className="mt-3 px-2 space-y-1">
                 <a
                   href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
                 >
                   Your Profile
                 </a>
 
                 <a
                   href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
                 >
                   Settings
                 </a>
 
                 <a
                   href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
                 >
                   Sign out
                 </a>
