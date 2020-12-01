@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   future: {
     // removeDeprecatedGapUtilities: true,
@@ -7,6 +9,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'light-blue': colors.lightBlue,
+        teal: colors.teal,
         indigo: {
           50: '#E0E8F9',
           100: '#BED0F7',
@@ -99,5 +103,5 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
