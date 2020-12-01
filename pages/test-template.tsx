@@ -10,19 +10,49 @@ const TestTemplate = ({ token }) => {
 
   const { data: user } = useSWR('/api/user')
 
+  {
+    /*
+    <!--
+    This example requires Tailwind CSS v2.0+ 
+    
+    This example requires some changes to your config:
+    
+    ```
+    // tailwind.config.js
+    const colors = require('tailwindcss/colors')
+    
+    module.exports = {
+      // ...
+      theme: {
+        extend: {
+          colors: {
+            'lightBlue': colors.lightBlue,
+            teal: colors.teal,
+          }
+        }
+      },
+      plugins: [
+        // ...
+        require('@tailwindcss/forms'),
+      ]
+    }
+    ```
+  -->
+   */
+  }
   return (
     <div>
-      <div className="relative bg-indigo-600 pb-32 overflow-hidden">
-        <nav className="relative z-10 border-b border-indigo-300 border-opacity-25 lg:bg-transparent lg:border-none">
+      <div className="relative bg-indigo-700 pb-32 overflow-hidden">
+        {/* <!-- On: "bg-indigo-900", Off: "bg-transparent" --> */}
+        <nav className="relative z-10 border-b border-indigo-500 border-opacity-25 lg:background-transparent lg:border-none">
           <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-            <div className="relative h-16 flex items-center justify-between">
+            <div className="relative h-16 flex items-center justify-between lg:border-b lg:border-indigo-800">
               <div className="px-2 flex items-center lg:px-0">
                 <div className="flex-shrink-0">
-                  <FontAwesomeIcon
-                    size="2x"
-                    color="bg-indigo-100"
-                    className="text-white"
-                    icon={faCoffeeTogo}
+                  <img
+                    className="block h-8 w-auto"
+                    src="https://tailwindui.com/img/logos/workflow-mark-white.svg"
+                    alt="Workflow"
                   />
                 </div>
                 <div className="hidden lg:block lg:ml-6 lg:space-x-4">
@@ -37,21 +67,21 @@ const TestTemplate = ({ token }) => {
 
                     <a
                       href="#"
-                      className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-light-blue-800"
+                      className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-indigo-800"
                     >
                       Jobs
                     </a>
 
                     <a
                       href="#"
-                      className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-light-blue-800"
+                      className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-indigo-800"
                     >
                       Applicants
                     </a>
 
                     <a
                       href="#"
-                      className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-light-blue-800"
+                      className="rounded-md py-2 px-3 text-sm font-medium text-white hover:bg-indigo-800"
                     >
                       Company
                     </a>
@@ -63,8 +93,9 @@ const TestTemplate = ({ token }) => {
                   <label htmlFor="search" className="sr-only">
                     Search
                   </label>
-                  <div className="relative text-indigo-400 focus-within:text-indigo-400">
+                  <div className="relative text-indigo-100 focus-within:text-gray-400">
                     <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+                      {/* <!-- Heroicon name: search --> */}
                       <svg
                         className="flex-shrink-0 h-5 w-5"
                         xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +113,7 @@ const TestTemplate = ({ token }) => {
                     <input
                       id="search"
                       name="search"
-                      className="block w-full bg-indigo-700 bg-opacity-50 py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 placeholder-indigo-200 focus:outline-none focus:bg-indigo-500 focus:ring-white focus:border-indigo-400 focus:placeholder-indigo-300 focus:text-coolGrey-100 sm:text-sm"
+                      className="block w-full bg-indigo-700 bg-opacity-50 py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 placeholder-indigo-100 focus:outline-none focus:bg-white focus:ring-white focus:border-white focus:placeholder-gray-500 focus:text-gray-900 sm:text-sm"
                       placeholder="Search"
                       type="search"
                     />
@@ -90,12 +121,18 @@ const TestTemplate = ({ token }) => {
                 </div>
               </div>
               <div className="flex lg:hidden">
+                {/* <!-- Mobile menu button --> */}
                 <button
-                  className="p-2 rounded-md inline-flex items-center justify-center text-indigo-300 hover:text-white hover:bg-light-blue-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  className="p-2 rounded-md inline-flex items-center justify-center text-indigo-200 hover:text-white hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                   aria-expanded="false"
                 >
                   <span className="sr-only">Open main menu</span>
-
+                  {/* <!-- Icon when menu is closed. -->
+                <!--
+                  Heroicon name: menu
+  
+                  Menu open: "hidden", Menu closed: "block"
+                --> */}
                   <svg
                     className="block flex-shrink-0 h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -111,6 +148,12 @@ const TestTemplate = ({ token }) => {
                       d="M4 6h16M4 12h16M4 18h16"
                     />
                   </svg>
+                  {/* <!-- Icon when menu is open. -->
+                <!--
+                  Heroicon name: x
+  
+                  Menu open: "block", Menu closed: "hidden"
+                --> */}
                   <svg
                     className="hidden flex-shrink-0 h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -130,8 +173,9 @@ const TestTemplate = ({ token }) => {
               </div>
               <div className="hidden lg:block lg:ml-4">
                 <div className="flex items-center">
-                  <button className="flex-shrink-0 rounded-full p-1 text-indigo-100 hover:bg-indigo-600 hover:text-indigo-100 focus:outline-none focus:bg-light-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-light-blue-900 focus:ring-white">
+                  <button className="flex-shrink-0 rounded-full p-1 text-indigo-200 hover:bg-indigo-800 hover:text-white focus:outline-none focus:bg-indigo-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-900 focus:ring-white">
                     <span className="sr-only">View notifications</span>
+                    {/* <!-- Heroicon name: bell --> */}
                     <svg
                       className="h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"
@@ -149,22 +193,33 @@ const TestTemplate = ({ token }) => {
                     </svg>
                   </button>
 
+                  {/* <!-- Profile dropdown --> */}
                   <div className="relative flex-shrink-0 ml-4">
                     <div>
                       <button
-                        className="rounded-full flex text-sm text-white focus:outline-none focus:bg-light-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-light-blue-900 focus:ring-white"
+                        className="rounded-full flex text-sm text-white focus:outline-none focus:bg-indigo-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-900 focus:ring-white"
                         id="user-menu"
                         aria-haspopup="true"
                       >
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="rounded-full h-8 w-8"
-                          src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=htmlFormat&fit=facearea&facepad=4&w=256&h=256&q=80"
+                          src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=80"
                           alt=""
                         />
                       </button>
                     </div>
-                    <div
+                    {/* <!--
+                    Profile dropdown panel, show/hide based on dropdown state.
+  
+                    Entering: "transition ease-out duration-100"
+                      From: "transform opacity-0 scale-95"
+                      To: "transform opacity-100 scale-100"
+                    Leaving: "transition ease-in duration-75"
+                      From: "transform opacity-100 scale-100"
+                      To: "transform opacity-0 scale-95"
+                  --> */}
+                    {/* <div
                       className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                       role="menu"
                       aria-orientation="vertical"
@@ -193,14 +248,19 @@ const TestTemplate = ({ token }) => {
                       >
                         Sign out
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-light-blue-900 hidden lg:hidden">
+          {/* <!--
+          Mobile menu, toggle classNamees based on menu state.
+  
+          Menu open: "block", Menu closed: "hidden"
+        --> */}
+          <div className="bg-indigo-900 hidden lg:hidden">
             <div className="pt-2 pb-3 px-2 space-y-1">
               <a
                 href="#"
@@ -211,31 +271,31 @@ const TestTemplate = ({ token }) => {
 
               <a
                 href="#"
-                className="block rounded-md py-2 px-3 text-base font-medium text-white hover:text-white hover:bg-light-blue-800"
+                className="block rounded-md py-2 px-3 text-base font-medium text-white hover:text-white hover:bg-indigo-800"
               >
                 Jobs
               </a>
 
               <a
                 href="#"
-                className="block rounded-md py-2 px-3 text-base font-medium text-white hover:text-white hover:bg-light-blue-800"
+                className="block rounded-md py-2 px-3 text-base font-medium text-white hover:text-white hover:bg-indigo-800"
               >
                 Applicants
               </a>
 
               <a
                 href="#"
-                className="block rounded-md py-2 px-3 text-base font-medium text-white hover:text-white hover:bg-light-blue-800"
+                className="block rounded-md py-2 px-3 text-base font-medium text-white hover:text-white hover:bg-indigo-800"
               >
                 Company
               </a>
             </div>
-            <div className="pt-4 pb-3 border-t border-indigo-300 ">
+            <div className="pt-4 pb-3 border-t border-indigo-800">
               <div className="flex items-center px-4">
                 <div className="flex-shrink-0">
                   <img
                     className="rounded-full h-10 w-10"
-                    src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=htmlFormat&fit=facearea&facepad=4&w=256&h=256&q=80h"
+                    src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=80h"
                     alt=""
                   />
                 </div>
@@ -243,12 +303,13 @@ const TestTemplate = ({ token }) => {
                   <div className="text-base font-medium text-white">
                     Debbie Lewis
                   </div>
-                  <div className="text-sm font-medium text-light-blue-200">
+                  <div className="text-sm font-medium text-indigo-200">
                     debbielewis@example.com
                   </div>
                 </div>
-                <button className="ml-auto flex-shrink-0 rounded-full p-1 text-light-blue-200 hover:bg-light-blue-800 hover:text-white focus:outline-none focus:bg-light-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-light-blue-900 focus:ring-white">
+                <button className="ml-auto flex-shrink-0 rounded-full p-1 text-indigo-200 hover:bg-indigo-800 hover:text-white focus:outline-none focus:bg-indigo-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-900 focus:ring-white">
                   <span className="sr-only">View notifications</span>
+                  {/* <!-- Heroicon name: bell --> */}
                   <svg
                     className="h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -269,21 +330,21 @@ const TestTemplate = ({ token }) => {
               <div className="mt-3 px-2">
                 <a
                   href="#"
-                  className="block rounded-md py-2 px-3 text-base font-medium text-light-blue-200 hover:text-white hover:bg-light-blue-800"
+                  className="block rounded-md py-2 px-3 text-base font-medium text-indigo-200 hover:text-white hover:bg-indigo-800"
                 >
                   Your Profile
                 </a>
 
                 <a
                   href="#"
-                  className="block rounded-md py-2 px-3 text-base font-medium text-light-blue-200 hover:text-white hover:bg-light-blue-800"
+                  className="block rounded-md py-2 px-3 text-base font-medium text-indigo-200 hover:text-white hover:bg-indigo-800"
                 >
                   Settings
                 </a>
 
                 <a
                   href="#"
-                  className="block rounded-md py-2 px-3 text-base font-medium text-light-blue-200 hover:text-white hover:bg-light-blue-800"
+                  className="block rounded-md py-2 px-3 text-base font-medium text-indigo-200 hover:text-white hover:bg-indigo-800"
                 >
                   Sign out
                 </a>
@@ -291,11 +352,13 @@ const TestTemplate = ({ token }) => {
             </div>
           </div>
         </nav>
+        {/* <!-- On: "bottom-0", Off: "inset-y-0" --> */}
+        {/* Note: bottom-0 added below is what fixes search bar color */}
         <div
-          className="absolute flex justify-center inset-x-0 left-1/2 transhtmlForm -translate-x-1/2 w-full overflow-hidden lg:inset-y-0"
+          className="absolute flex justify-center inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0"
           aria-hidden="true"
         >
-          <div className="flex-grow bg-indigo-100 bg-opacity-75"></div>
+          <div className="flex-grow bg-indigo-900 bg-opacity-75"></div>
           <svg
             className="flex-shrink-0"
             width="1750"
@@ -306,15 +369,15 @@ const TestTemplate = ({ token }) => {
             <path
               opacity=".75"
               d="M1465.84 308L16.816 0H1750v308h-284.16z"
-              fill="#647ACB"
+              fill="#2D3A8C"
             />
             <path
               opacity=".75"
               d="M1733.19 0L284.161 308H0V0h1733.19z"
-              fill="#4055A8"
+              fill="#19216C"
             />
           </svg>
-          <div className="flex-grow bg-light-blue-800 bg-opacity-75"></div>
+          <div className="flex-grow bg-indigo-800 bg-opacity-75"></div>
         </div>
         <header className="relative py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -331,11 +394,12 @@ const TestTemplate = ({ token }) => {
                 <nav>
                   <a
                     href="#"
-                    className="group bg-teal-50 border-l-4 border-indigo-300 px-3 py-2 flex items-center text-sm font-medium text-teal-700 hover:bg-teal-50 hover:text-teal-700"
+                    className="group bg-indigo-50 border-l-4 border-indigo-500 px-3 py-2 flex items-center text-sm font-medium text-indigo-700 hover:bg-indigo-50 hover:text-indigo-700"
                     aria-current="page"
                   >
+                    {/* <!-- Heroicon name: user-circle --> */}
                     <svg
-                      className="flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-teal-500 group-hover:text-teal-500"
+                      className="flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-indigo-500 group-hover:text-indigo-500"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -356,6 +420,7 @@ const TestTemplate = ({ token }) => {
                     href="#"
                     className="group mt-1 border-l-4 border-transparent px-3 py-2 flex items-center text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-gray-900"
                   >
+                    {/* <!-- Heroicon name: cog --> */}
                     <svg
                       className="flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -384,6 +449,7 @@ const TestTemplate = ({ token }) => {
                     href="#"
                     className="group mt-1 border-l-4 border-transparent px-3 py-2 flex items-center text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-gray-900"
                   >
+                    {/* <!-- Heroicon name: key --> */}
                     <svg
                       className="flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -406,6 +472,7 @@ const TestTemplate = ({ token }) => {
                     href="#"
                     className="group mt-1 border-l-4 border-transparent px-3 py-2 flex items-center text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-gray-900"
                   >
+                    {/* <!-- Heroicon name: bell --> */}
                     <svg
                       className="flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -428,6 +495,7 @@ const TestTemplate = ({ token }) => {
                     href="#"
                     className="group mt-1 border-l-4 border-transparent px-3 py-2 flex items-center text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-gray-900"
                   >
+                    {/* <!-- Heroicon name: credit-card --> */}
                     <svg
                       className="flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -450,6 +518,7 @@ const TestTemplate = ({ token }) => {
                     href="#"
                     className="group mt-1 border-l-4 border-transparent px-3 py-2 flex items-center text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-gray-900"
                   >
+                    {/* <!-- Heroicon name: view-grid-add --> */}
                     <svg
                       className="flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -475,14 +544,15 @@ const TestTemplate = ({ token }) => {
                 action="#"
                 method="POST"
               >
+                {/* <!-- Profile section --> */}
                 <div className="py-6 px-4 sm:p-6 lg:pb-8">
                   <div>
                     <h2 className="text-lg leading-6 font-medium text-gray-900">
                       Profile
                     </h2>
                     <p className="mt-1 text-sm text-gray-500">
-                      This inhtmlFormation will be displayed publicly so be careful
-                      what you share.
+                      This information will be displayed publicly so be careful what
+                      you share.
                     </p>
                   </div>
 
@@ -496,7 +566,7 @@ const TestTemplate = ({ token }) => {
                           Username
                         </label>
                         <div className="mt-1 rounded-md shadow-sm flex">
-                          <span className="bg-gray-50 border border-r-0 border-indigo-300 rounded-l-md px-3 inline-flex items-center text-gray-500 sm:text-sm">
+                          <span className="bg-gray-50 border border-r-0 border-gray-300 rounded-l-md px-3 inline-flex items-center text-gray-500 sm:text-sm">
                             workcation.com/
                           </span>
                           <input
@@ -504,7 +574,7 @@ const TestTemplate = ({ token }) => {
                             name="username"
                             id="username"
                             autoComplete="username"
-                            className="focus:ring-light-blue-500 focus:border-light-blue-500 flex-grow block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-indigo-300 "
+                            className="focus:ring-indigo-500 focus:border-indigo-500 flex-grow block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                             value="lisamarie"
                           />
                         </div>
@@ -521,13 +591,12 @@ const TestTemplate = ({ token }) => {
                           <textarea
                             id="about"
                             name="about"
-                            rows={3}
-                            className="shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
+                            rows="3"
+                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
                           ></textarea>
                         </div>
                         <p className="mt-2 text-sm text-gray-500">
-                          Brief description htmlFor your profile. URLs are
-                          hyperlinked.
+                          Brief description for your profile. URLs are hyperlinked.
                         </p>
                       </div>
                     </div>
@@ -547,12 +616,12 @@ const TestTemplate = ({ token }) => {
                           >
                             <img
                               className="rounded-full h-full w-full"
-                              src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=htmlFormat&fit=facearea&facepad=4&w=256&h=256&q=80h"
+                              src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=80h"
                               alt=""
                             />
                           </div>
                           <div className="ml-5 rounded-md shadow-sm">
-                            <div className="group relative border border-indigo-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-light-blue-500">
+                            <div className="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                               <label
                                 htmlFor="user_photo"
                                 className="relative text-sm leading-4 font-medium text-gray-700 pointer-events-none"
@@ -564,7 +633,7 @@ const TestTemplate = ({ token }) => {
                                 id="user_photo"
                                 name="user_photo"
                                 type="file"
-                                className="absolute w-full h-full opacity-0 cursor-pointerborder-indigo-300 rounded-md"
+                                className="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md"
                               />
                             </div>
                           </div>
@@ -574,7 +643,7 @@ const TestTemplate = ({ token }) => {
                       <div className="hidden relative rounded-full overflow-hidden lg:block">
                         <img
                           className="relative rounded-full w-40 h-40"
-                          src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=htmlFormat&fit=facearea&facepad=4&w=320&h=320&q=80"
+                          src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=320&h=320&q=80"
                           alt=""
                         />
                         <label
@@ -607,7 +676,7 @@ const TestTemplate = ({ token }) => {
                         name="first_name"
                         id="first_name"
                         autoComplete="given-name"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
 
@@ -623,7 +692,7 @@ const TestTemplate = ({ token }) => {
                         name="last_name"
                         id="last_name"
                         autoComplete="family-name"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
 
@@ -638,7 +707,7 @@ const TestTemplate = ({ token }) => {
                         type="text"
                         name="url"
                         id="url"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
 
@@ -654,12 +723,13 @@ const TestTemplate = ({ token }) => {
                         name="company"
                         id="company"
                         autoComplete="organization"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
                   </div>
                 </div>
 
+                {/* <!-- Privacy section --> */}
                 <div className="pt-6 divide-y divide-gray-200">
                   <div className="px-4 sm:px-6">
                     <div>
@@ -687,17 +757,19 @@ const TestTemplate = ({ token }) => {
                             lacinia.
                           </p>
                         </div>
+                        {/* <!-- On: "bg-indigo-500", Off: "bg-gray-200" --> */}
                         <button
                           type="button"
                           aria-pressed="true"
                           aria-labelledby="privacy-option-label-1"
                           aria-describedby="privacy-option-description-1"
-                          className="ml-4 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue-500"
+                          className="ml-4 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                           <span className="sr-only">Use setting</span>
+                          {/* <!-- On: "translate-x-5", Off: "translate-x-0" --> */}
                           <span
                             aria-hidden="true"
-                            className="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transhtmlForm ring-0 transition ease-in-out duration-200"
+                            className="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
                           ></span>
                         </button>
                       </li>
@@ -717,17 +789,19 @@ const TestTemplate = ({ token }) => {
                             pharetra.
                           </p>
                         </div>
+                        {/* <!-- On: "bg-indigo-500", Off: "bg-gray-200" --> */}
                         <button
                           type="button"
                           aria-pressed="false"
                           aria-labelledby="privacy-option-label-2"
                           aria-describedby="privacy-option-description-2"
-                          className="ml-4 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue-500"
+                          className="ml-4 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                           <span className="sr-only">Use setting</span>
+                          {/* <!-- On: "translate-x-5", Off: "translate-x-0" --> */}
                           <span
                             aria-hidden="true"
-                            className="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transhtmlForm ring-0 transition ease-in-out duration-200"
+                            className="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
                           ></span>
                         </button>
                       </li>
@@ -747,17 +821,19 @@ const TestTemplate = ({ token }) => {
                             ame
                           </p>
                         </div>
+                        {/* <!-- On: "bg-indigo-500", Off: "bg-gray-200" --> */}
                         <button
                           type="button"
                           aria-pressed="true"
                           aria-labelledby="privacy-option-label-3"
                           aria-describedby="privacy-option-description-3"
-                          className="ml-4 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue-500"
+                          className="ml-4 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                           <span className="sr-only">Use setting</span>
+                          {/* <!-- On: "translate-x-5", Off: "translate-x-0" --> */}
                           <span
                             aria-hidden="true"
-                            className="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transhtmlForm ring-0 transition ease-in-out duration-200"
+                            className="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
                           ></span>
                         </button>
                       </li>
@@ -776,17 +852,19 @@ const TestTemplate = ({ token }) => {
                             Adipiscing est venenatis enim molestie commodo eu gravid
                           </p>
                         </div>
+                        {/* <!-- On: "bg-indigo-500", Off: "bg-gray-200" --> */}
                         <button
                           type="button"
                           aria-pressed="true"
                           aria-labelledby="privacy-option-label-4"
                           aria-describedby="privacy-option-description-4"
-                          className="ml-4 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue-500"
+                          className="ml-4 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                           <span className="sr-only">Use setting</span>
+                          {/* <!-- On: "translate-x-5", Off: "translate-x-0" --> */}
                           <span
                             aria-hidden="true"
-                            className="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transhtmlForm ring-0 transition ease-in-out duration-200"
+                            className="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
                           ></span>
                         </button>
                       </li>
@@ -795,13 +873,13 @@ const TestTemplate = ({ token }) => {
                   <div className="mt-4 py-4 px-4 flex justify-end sm:px-6">
                     <button
                       type="button"
-                      className="bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue-500"
+                      className="bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="ml-5 bg-light-blue-700 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-light-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue-500"
+                      className="ml-5 bg-indigo-700 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       Save
                     </button>
