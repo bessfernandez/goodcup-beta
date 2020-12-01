@@ -49,10 +49,11 @@ const TestTemplate = ({ token }) => {
             <div className="relative h-16 flex items-center justify-between lg:border-b lg:border-indigo-800">
               <div className="px-2 flex items-center lg:px-0">
                 <div className="flex-shrink-0">
-                  <img
-                    className="block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-white.svg"
-                    alt="Workflow"
+                  <FontAwesomeIcon
+                    size="2x"
+                    color="bg-indigo-100"
+                    className="text-white"
+                    icon={faCoffeeTogo}
                   />
                 </div>
                 <div className="hidden lg:block lg:ml-6 lg:space-x-4">
