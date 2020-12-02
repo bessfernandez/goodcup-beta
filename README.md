@@ -5,7 +5,7 @@ Now. that's a good cup. :coffee:
 A place to research coffee beans and journal your favorites.
 
 ## Also
-Very Beta. Trying out new technology things. Do I hate Taillwind CSS? Unsure yet!
+Very early in process. Most experiments, prototyping, trying out new technology things. Do I hate Taillwind CSS? Unsure yet!
 
 ## Tech Stack.
 - Next.js
