@@ -364,9 +364,7 @@ const Header = () => {
         </div>
         <header className="relative py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="hidden text-3xl font-bold text-white">
-              Header here hidden or not
-            </h1>
+            <h1 className="text-3xl font-bold text-white">Good cup.</h1>
           </div>
         </header>
       </div>
