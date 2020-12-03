@@ -127,9 +127,9 @@ const Home = ({ token }) => {
                 <div className="py-6 px-4 sm:p-6 lg:pb-8">
                   <div>
                     <header>
-                      <h1 className="text-3xl font-bold leading-tight text-gray-900">
+                      <h2 className="text-3xl font-bold leading-tight text-gray-900">
                         Dashboard
-                      </h1>
+                      </h2>
                     </header>
                     <main>
                       {error && !data && (
