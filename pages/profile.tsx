@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { gql } from 'graphql-request'
 import { useForm } from 'react-hook-form'
