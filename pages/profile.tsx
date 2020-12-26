@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter} from 'next/router'
 import useSWR from 'swr'
 import { gql } from 'graphql-request'
 import { useForm } from 'react-hook-form'
@@ -10,7 +9,6 @@ import { graphQLClient } from '../utils/graphql-client'
 import { getAuthCookie } from '../utils/auth-cookies'
 
 const Profile = ({ token }) => {
-  
   const router = useRouter()
 
   const { data: user } = useSWR('/api/user')
@@ -28,11 +26,10 @@ const Profile = ({ token }) => {
       <Layout>
         <h1 className="text-xl my-4">Welcome!</h1>
         <p>
-          Please {" "}
+          Please{' '}
           <Link href="/login">
             <a>login</a>
-          </Link>
-          {" "}
+          </Link>{' '}
           to add and log your favorite coffees.
         </p>
       </Layout>
@@ -43,7 +40,7 @@ const Profile = ({ token }) => {
     <Layout>
       <h1 className="text-lg my-4">Profile</h1>
 
-       <div className="md:flex bg-white rounded-lg p-24 justify-center">
+      <div className="md:flex bg-white rounded-lg p-24 justify-center">
         <img
           className="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
           src="https://avatars0.githubusercontent.com/u/267047?s=460&v=4"
