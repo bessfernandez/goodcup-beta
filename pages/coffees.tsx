@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Layout from '../components/layout/layout'
+import DisqusThread from '../components/disqus-thread'
 import utilStyles from '../styles/utils.module.css'
 
 const CoffeeDetail = () => {
@@ -60,6 +61,9 @@ const CoffeeDetail = () => {
                         crafted to pair tremendously with milk, and serve as a blend
                         for drinkers of all types.
                       </p>
+                    </div>
+                    <div>
+                      <DisqusThread id="e94d73ff-fd92-467d-b643-c86889f4b8be" />
                     </div>
                   </div>
                 </div>
