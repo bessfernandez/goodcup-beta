@@ -1,55 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
-const SHORTNAME = 'good-cup'
-const WEBSITE_URL = 'http://www.goodcup.coffee'
-
-function renderDisqus() {
-  if (window.DISQUS === undefined) {
-    const script = document.createElement('script')
-    script.async = true
-    script.src = 'https://good-cup.disqus.com/embed.js'
-    document.getElementsByTagName('head')[0].appendChild(script)
-  } else {
-    window.DISQUS.reset({ reload: true })
+import { DiscussionEmbed } from 'disqus-react'
+const DisqusComments = ({ post }) => {
+  const disqusShortname = 'good-cup'
+  const disqusConfig = {
+    url: 'https://goodcup.coffee/post-slug',
+    identifier: post.id, // Single post id
+    title: post.title, // Single post title
   }
+  return (
+    <div>
+      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+    </div>
+  )
 }
-
-class DisqusThread extends React.Component {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.id !== nextProps.id ||
-      this.props.title !== nextProps.title ||
-      this.props.path !== nextProps.path
-    )
-  }
-
-  componentDidMount() {
-    renderDisqus()
-  }
-
-  componentDidUpdate() {
-    renderDisqus()
-  }
-
-  render() {
-    let { id, title, path, ...other } = this.props
-
-    if (process.env.BROWSER) {
-      window.disqus_shortname = SHORTNAME
-      window.disqus_identifier = id
-      window.disqus_title = title
-      window.disqus_url = WEBSITE_URL + path
-    }
-
-    return <div {...other} id="disqus_thread" />
-  }
-}
-
-export default DisqusThread
+export default DisqusComments
