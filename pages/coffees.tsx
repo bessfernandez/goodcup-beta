@@ -63,7 +63,7 @@ const CoffeeDetail = () => {
                       </p>
                     </div>
                     <div>
-                      <DisqusThread id="e94d73ff-fd92-467d-b643-c86889f4b8be" />
+                      <DisqusThread post={{ id: 'tbd', title: 'Coffee detail' }} />
                     </div>
                   </div>
                 </div>
