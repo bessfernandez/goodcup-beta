@@ -4,6 +4,7 @@ import { CircularProgress, Box } from '@material-ui/core'
 import useSWR from 'swr'
 import { gql } from 'graphql-request'
 import Layout from '../components/layout/layout'
+import CoffeeDetail from '../components/coffee-detail'
 import { graphQLClient } from '../utils/graphql-client'
 import { getAuthCookie } from '../utils/auth-cookies'
 
@@ -144,6 +145,8 @@ const Home = ({ token }) => {
                           </p>
                         </div>
                       )}
+                      <CoffeeDetail />
+
                       {data && data.allRoasters && (
                         <React.Fragment>
                           <h2 className="text-xl my-4">Roasters</h2>
