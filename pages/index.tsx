@@ -145,6 +145,7 @@ const Home = ({ token }) => {
                           </p>
                         </div>
                       )}
+
                       <CoffeeDetail />
 
                       {data && data.allRoasters && (
