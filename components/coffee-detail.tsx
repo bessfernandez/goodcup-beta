@@ -1,12 +1,13 @@
 import React from 'react'
 import DisqusThread from '../components/disqus-thread'
+import RadarChart from '../components/radar-chart'
 import ratingStyles from '../styles/ratings.module.css'
 
 const CoffeeDetail = () => {
   return (
     <div>
       <div className="min-h-screen mt-6 flex flex-col">
-        <div className="justify-center bg-white pl-10">
+        <div className="justify-center bg-white">
           <div className="bg-white grid grid-cols-2 gap-4">
             <div className="mt-4">
               <h2 className="text-2xl">Holiday Blend</h2>
@@ -23,7 +24,7 @@ const CoffeeDetail = () => {
             </div>
           </div>
         </div>
-        <div className=" bg-white grid grid-cols-2 gap-4 pl-10">
+        <div className=" bg-white grid grid-cols-2 gap-4">
           <div>
             <img
               src="https://cdn.shopify.com/s/files/1/1607/0925/products/OG-CHR-12oz_800x800.jpg?v=1606846854"
@@ -40,9 +41,18 @@ const CoffeeDetail = () => {
             <p className="mt-2">Grapefruit, blackberry, honey</p>
           </div>
         </div>
+
+        <div className="mt-10">
+          <div className="mt-4">
+            <h2 className="text-2xl">Taste</h2>
+          </div>
+          <div className=" bg-white grid grid-cols-2 gap-4 pl-4 max-w-lg">
+            <RadarChart />
+          </div>
+        </div>
       </div>
 
-      <div>
+      <div className="mt-40">
         <DisqusThread post={{ id: 'tbd', title: 'Coffee detail' }} />
       </div>
     </div>
