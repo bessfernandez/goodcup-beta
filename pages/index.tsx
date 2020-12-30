@@ -135,14 +135,14 @@ const Home = ({ token }) => {
                     <main>
                       {error && !data && (
                         <div>
-                          <p className="mt-6">I will be fancier soon.</p>
-                          <p className="my-10">
+                          <p className="mt-6 text-base">I will be fancier soon.</p>
+                          {/* <p className="my-10">
                             Please{' '}
                             <Link href="/login">
                               <a>login</a>
                             </Link>{' '}
                             to add and log your favorite coffees.
-                          </p>
+                          </p> */}
                         </div>
                       )}
 
