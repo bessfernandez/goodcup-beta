@@ -9,7 +9,7 @@ const CoffeeDetail = () => {
       <div className="flex flex-wrap md:flex-row md:justify-around sm:flex-col sm:place-items-center gap-6">
         <div>
           <div>
-            <div className="justify-center">
+            <div className="grid grid-cols-1">
               <img
                 className="max-w-sm"
                 src="https://cdn.shopify.com/s/files/1/0148/9967/products/KenyaKaratu_1024x1024.png?v=1606243254"
@@ -52,7 +52,7 @@ const CoffeeDetail = () => {
 
         <div>
           <div>
-            <div className="flex justify-center">
+            <div className="grid grid-cols-1">
               <img
                 className="max-w-sm"
                 src="https://cdn.shopify.com/s/files/1/0148/9967/products/ColombiaAmparoPajoyMicroLot27_1024x1024.png?v=1604683105"
