@@ -123,19 +123,21 @@ const Home = ({ token }) => {
       <main className="relative -mt-32">
         <div className="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
           <div className="bg-white rounded-lg shadow overflow-hidden">
-            <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
+            <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-2 lg:divide-y-0 lg:divide-x">
               <div className="divide-y divide-gray-200 lg:col-span-9">
                 <div className="py-6 px-4 sm:p-6 lg:pb-8">
                   <div>
                     <header>
                       <h2 className="text-3xl font-bold leading-tight text-gray-900">
-                        Dashboard
+                        Recent
                       </h2>
                     </header>
                     <main>
                       {error && !data && (
                         <div>
-                          <p className="mt-6 text-base">I will be fancier soon.</p>
+                          <p className="my-6 text-base">
+                            ... more things coming soon. Hard coding prototypes.
+                          </p>
                           {/* <p className="my-10">
                             Please{' '}
                             <Link href="/login">
