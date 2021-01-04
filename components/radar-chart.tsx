@@ -18,6 +18,7 @@ const data = {
 
 const options = {
   responsive: true,
+  defaultFontSize: 10,
   maintainAspectRatio: true,
   scale: {
     ticks: {
@@ -27,7 +28,8 @@ const options = {
       stepSize: 1,
     },
     pointLabels: {
-      fontSize: 18,
+      fontSize: 12,
+      fontStyle: 'bold',
     },
   },
   legend: {
