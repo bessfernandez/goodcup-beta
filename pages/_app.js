@@ -7,7 +7,9 @@ import theme from '../theme'
 import '../styles/tailwind.css'
 import '../styles/globals.css'
 
-export default function MyApp(props) {
+// The following is the root _app setup to include Material-UI
+// https://github.com/mui-org/material-ui/tree/master/examples/nextjs
+export default function GoodCupApp(props) {
   const { Component, pageProps } = props
 
   React.useEffect(() => {
@@ -21,7 +23,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>My page</title>
+        <title>Good cup - Your favorite cups</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -36,7 +38,7 @@ export default function MyApp(props) {
   )
 }
 
-MyApp.propTypes = {
+GoodCupApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
 }
