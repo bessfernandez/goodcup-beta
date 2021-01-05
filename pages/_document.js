@@ -3,7 +3,9 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
 import theme from '../theme'
 
-export default class MyDocument extends Document {
+// The following is the root _document setup to include Material-UI and support SSG
+// https://github.com/mui-org/material-ui/tree/master/examples/nextjs
+export default class GoodCupDocument extends Document {
   render() {
     return (
       <Html lang="en">
@@ -15,7 +17,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
         </Head>
-        <body className="bg-coolGrey-50">
+        <body>
           <Main />
           <NextScript />
         </body>
@@ -26,7 +28,7 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with server-side generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+GoodCupDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:

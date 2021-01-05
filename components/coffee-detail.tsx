@@ -6,7 +6,7 @@ import ratingStyles from '../styles/ratings.module.css'
 const CoffeeDetail = () => {
   return (
     <div>
-      <div className="flex flex-wrap md:flex-row md:justify-around sm:flex-col sm:place-items-center gap-6">
+      <div className="flex md:flex-row md:justify-around sm:flex-col sm:place-items-center gap-10">
         <div>
           <div>
             <div className="grid grid-cols-1">
