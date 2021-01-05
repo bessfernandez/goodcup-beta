@@ -29,9 +29,3 @@ type Roaster {
   address: Address
   coffees: [Coffee] @relation
 }
-
-type Query {
-  allCoffees: [Coffee!] @index(name: "all_coffees")
-  todosByRating(rating: Int!): [Coffee!]
-  allRoasters: [Roaster!] @index(name: "all_roasters")
-}

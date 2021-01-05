@@ -24,7 +24,8 @@ const Header = () => {
 
   return (
     <header>
-      <div className="relative bg-indigo-700 pb-32 overflow-hidden">
+      {/* Header prototype below - does not handle navigation or JS state toggling*/}
+      <div className="relative bg-indigo-900 pb-32 overflow-hidden">
         {/* <!-- On: "bg-indigo-900", Off: "bg-transparent" --> */}
         <nav className="relative z-10 border-b border-indigo-500 border-opacity-25 lg:background-transparent lg:border-none">
           <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
@@ -336,9 +337,8 @@ const Header = () => {
           </div>
         </nav>
         {/* <!-- On: "bottom-0", Off: "inset-y-0" --> */}
-        {/* Note: bottom-0 added below is what fixes search bar color */}
         <div
-          className="absolute flex justify-center inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0"
+          className="absolute bottom-0 flex justify-center inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0"
           aria-hidden="true"
         >
           <div className="flex-grow bg-indigo-900 bg-opacity-75"></div>
