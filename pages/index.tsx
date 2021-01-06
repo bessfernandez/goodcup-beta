@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import { CircularProgress, Box } from '@material-ui/core'
 import useSWR from 'swr'
 import { gql } from 'graphql-request'
@@ -11,7 +10,7 @@ import { getAuthCookie } from '../utils/auth-cookies'
 const Home = ({ token }) => {
   const fetcher = async (query) => await graphQLClient(token).request(query)
 
-  const { data, error, mutate } = useSWR(
+  const { data, error } = useSWR(
     gql`
       {
         allRoasters {
@@ -138,6 +137,7 @@ const Home = ({ token }) => {
                           <p className="my-6 text-base">
                             ... more things coming soon. Hard coding prototypes.
                           </p>
+                          {/* Commenting out login for now while prototyping */}
                           {/* <p className="my-10">
                             Please{' '}
                             <Link href="/login">
@@ -150,6 +150,7 @@ const Home = ({ token }) => {
 
                       <CoffeeDetail />
 
+                      {/* Coffee info for auth'ed users - still in development */}
                       {data && data.allRoasters && (
                         <React.Fragment>
                           <h2 className="text-xl my-4">Roasters</h2>
