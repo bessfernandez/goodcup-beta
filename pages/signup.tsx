@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../components/layout/layout'
-import utilStyles from '../styles/utils.module.css'
 
 const Signup = () => {
   const router = useRouter()
@@ -38,7 +37,8 @@ const Signup = () => {
     <Layout>
       <h1 className="text-xl my-4">Sign Up</h1>
 
-      <form onSubmit={onSubmit} className={utilStyles.form}>
+      {/* Barebones signup for testing */}
+      <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -48,11 +48,7 @@ const Signup = () => {
             placeholder="e.g. john@example.com"
             ref={register({ required: 'Email is required' })}
           />
-          {errors.email && (
-            <span role="alert" className={utilStyles.error}>
-              {errors.email.message}
-            </span>
-          )}
+          {errors.email && <span role="alert">{errors.email.message}</span>}
         </div>
 
         <div>
@@ -64,11 +60,7 @@ const Signup = () => {
             placeholder="e.g. John-1234"
             ref={register({ required: 'Password is required' })}
           />
-          {errors.password && (
-            <span role="alert" className={utilStyles.error}>
-              {errors.password.message}
-            </span>
-          )}
+          {errors.password && <span role="alert">{errors.password.message}</span>}
         </div>
 
         <div>
@@ -83,23 +75,15 @@ const Signup = () => {
                 value === watch('password') || 'Passwords do not match',
             })}
           />
-          {errors.password2 && (
-            <span role="alert" className={utilStyles.error}>
-              {errors.password2.message}
-            </span>
-          )}
+          {errors.password2 && <span role="alert">{errors.password2.message}</span>}
         </div>
 
-        <div className={utilStyles.submit}>
+        <div>
           <button type="submit">Sign up</button>
         </div>
       </form>
 
-      {errorMessage && (
-        <p role="alert" className={utilStyles.errorMessage}>
-          {errorMessage}
-        </p>
-      )}
+      {errorMessage && <p role="alert">{errorMessage}</p>}
     </Layout>
   )
 }
